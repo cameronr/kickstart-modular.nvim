@@ -57,6 +57,23 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 4
+
+-- Don't autowrap comments (but i still need the BufEnter at the bottom)
+vim.opt.formatoptions:remove { 'c', 'r', 'o' }
+
+-- Really, really disable comment wrapping
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    vim.opt.formatoptions:remove { 'c', 'r', 'o' }
+  end,
+  desc = 'Disable New Line Comment',
+})
+
+-- Wrap arrow keys
+vim.opt.whichwrap:append '<,>,[,]'
+
+-- Add characters to set used to identify words
+vim.opt.iskeyword:append { '-', '.', '/', ':', '.' }
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -48,4 +48,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Map jk as alternate escape sequence
+vim.keymap.set('i', 'jk', '<Esc>')
+
+-- Sloppy aliases for accidental capital commands
+vim.api.nvim_create_user_command('WQ', 'wq', {})
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Qa', 'qa', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
+
 -- vim: ts=2 sts=2 sw=2 et
