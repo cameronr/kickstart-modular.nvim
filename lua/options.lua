@@ -76,4 +76,7 @@ vim.opt.whichwrap:append '<,>,[,]'
 -- Add characters to set used to identify words
 vim.opt.iskeyword:append { '-', '.', '/', ':', '.' }
 
+-- Don't show ~ at end of buffer
+vim.opt.fillchars = { eob = ' ' }
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -183,6 +183,25 @@ return {
             },
           },
         },
+
+        -- Bash
+        bashls = {
+          filetypes = { 'sh', 'zsh', 'bash' },
+        },
+
+        -- Javascript/Typescript
+        tsserver = {},
+
+        -- Python
+        pyright = {},
+
+        -- Shopify
+        -- theme_check = {
+        --   cmd = { 'theme-check-liquid-server' },
+        -- },
+
+        -- YAML
+        yamlls = {},
       }
 
       -- Ensure the servers and tools above are installed
