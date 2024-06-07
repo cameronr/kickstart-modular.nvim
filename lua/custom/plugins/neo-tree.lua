@@ -11,6 +11,12 @@ return {
     { '<leader>e', ':Neotree toggle<CR>', { desc = 'NeoTree toggle' } },
   },
   opts = {
+    window = {
+      mappings = {
+        -- Unmap toggle so which-key works
+        ['<space>'] = 'none',
+      },
+    },
     filesystem = {
       filtered_items = {
         hide_dotfiles = false,
