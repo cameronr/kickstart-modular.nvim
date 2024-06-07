@@ -91,6 +91,9 @@ require('lazy').setup({
       task = '📌',
       lazy = '💤 ',
     },
+    size = { width = 0.8, height = 0.8 },
+    -- pills = true, ---@type boolean,
+    border = 'rounded',
   },
 })
 

@@ -1,7 +1,7 @@
 return {
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       {
@@ -28,17 +28,20 @@ return {
         },
       },
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
 
       -- Adds other completion capabilities.
       --  nvim-cmp does not ship with all sources by default. They are split
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
@@ -47,7 +50,7 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert,noselect' },
+        completion = { completeopt = 'menu,menuone,noinsert,noselecti,popup' },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -104,12 +107,75 @@ return {
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
+        ---@diagnostic disable-next-line: missing-fields
+        formatting = {
+          fields = { 'abbr', 'kind', 'menu' },
+          format = lspkind.cmp_format {
+            mode = 'symbol',
+          },
+        },
+
+        -- view = {
+        --   ---@diagnostic disable-next-line: missing-fields
+        --   entries = {
+        --     follow_cursor = true,
+        --   },
+        -- },
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
         },
+        -- experimental = {
+        --   ghost_text = true,
+        -- },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
       }
+
+      -- https://github.com/hrsh7th/nvim-cmp/issues/181
+      local has_words_before = function()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match '%s'
+      end
+
+      -- Enable command-line completion
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline {
+          ['<Down>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+              -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+              -- that way you will only jump inside the snippet region
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { 'c' }),
+          ['<Up>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'c' }),
+        },
+        sources = {
+          { name = 'cmdline' },
+        },
+        ---@diagnostic disable-next-line: missing-fields
+        formatting = {
+          fields = { 'abbr' },
+        },
+      })
     end,
   },
 }
