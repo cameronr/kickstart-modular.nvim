@@ -189,17 +189,20 @@ return {
             },
           },
         },
+      }
 
+      -- Insert the servers we only want to install on mac
+      if vim.fn.has 'macunix' == 1 then
         -- Bash
-        bashls = {
+        servers['bashls'] = {
           filetypes = { 'sh', 'zsh', 'bash' },
-        },
+        }
 
         -- Javascript/Typescript
-        tsserver = {},
+        servers['tsserver'] = {}
 
         -- Python
-        pyright = {},
+        servers['pyright'] = {}
 
         -- Shopify
         -- theme_check = {
@@ -207,8 +210,8 @@ return {
         -- },
 
         -- YAML
-        yamlls = {},
-      }
+        servers['yamlls'] = {}
+      end
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
