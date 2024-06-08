@@ -156,11 +156,6 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 
-      -- TODO: make this a overridable variable, environemnt or machine local config?
-      if vim.fn.has 'macunix' == 0 then
-        return
-      end
-
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -190,6 +185,8 @@ return {
           },
         },
       }
+
+      -- TODO: make this a overridable variable, environemnt or machine local config?
 
       -- Insert the servers we only want to install on mac
       if vim.fn.has 'macunix' == 1 then
