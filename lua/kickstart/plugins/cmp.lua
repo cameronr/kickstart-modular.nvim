@@ -50,7 +50,7 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert,noselecti,popup' },
+        completion = { completeopt = 'menu,menuone,noinsert,noselect,popup' },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -145,6 +145,24 @@ return {
 
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline {
+          ['<Bslash>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.abort()
+            else
+              fallback()
+            end
+          end, { 'c' }),
+
+          -- For CR, if cmp is open and an option is selected, confirm it but don't
+          -- submit the command (so the user can type arguments if needed)
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() and cmp.get_selected_entry() ~= nil then
+              cmp.confirm()
+            else
+              cmp.close()
+              fallback()
+            end
+          end, { 'c' }),
           ['<Down>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
