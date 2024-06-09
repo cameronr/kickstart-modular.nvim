@@ -48,16 +48,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Able to use semicolon in normal mode
+vim.keymap.set('n', ';', ':', { desc = '; Command mode' })
+
 -- Map jk as alternate escape sequence
 vim.keymap.set('i', 'jk', '<Esc>')
 
 -- Sloppy aliases for accidental capital commands
-vim.api.nvim_create_user_command('WQ', 'wq', {})
-vim.api.nvim_create_user_command('Wq', 'wq', {})
-vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('X', 'x', {})
 
+--
 -- Put things removed by d into the blackhole register
 vim.keymap.set('n', 'd', '"_d')
 vim.keymap.set('v', 'd', '"_d')

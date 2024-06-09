@@ -81,6 +81,9 @@ return {
               },
             },
           },
+          colorscheme = {
+            enable_preview = true,
+          },
         },
         extensions = {
           ['ui-select'] = {
