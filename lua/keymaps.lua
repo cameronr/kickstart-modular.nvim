@@ -58,4 +58,11 @@ vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
 
+-- Put things removed by d into the blackhole register
+vim.keymap.set('n', 'd', '"_d')
+vim.keymap.set('v', 'd', '"_d')
+
+-- Put change into the blackhole register
+vim.keymap.set('n', 'c', '"_c')
+
 -- vim: ts=2 sts=2 sw=2 et
