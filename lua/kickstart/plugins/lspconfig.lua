@@ -194,6 +194,14 @@ return {
         servers['bashls'] = {
           filetypes = { 'sh', 'zsh', 'bash' },
         }
+        servers['html'] = {}
+        servers['cssls'] = {}
+        servers['tailwindcss'] = {}
+        -- servers['cssls'] = {},
+        --  servers['tailwindcss'] = {},
+
+        -- Javascript/Typescript
+        -- servers['tsserver'] = {},
 
         -- Javascript/Typescript
         servers['tsserver'] = {}

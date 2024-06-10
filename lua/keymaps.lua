@@ -8,7 +8,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>m', vim.diagnostic.open_float, { desc = 'Show diagnostic error [M]essages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -70,8 +70,8 @@ vim.keymap.set('n', 'c', '"_c')
 
 -- map page up/down to ctrl-u/d
 -- now handled in neoscroll
--- vim.keymap.set('n', '<pageup>', '<c-u>')
--- vim.keymap.set('n', '<pagedown>', '<c-d>')
+vim.keymap.set('n', '<pageup>', '<c-u>')
+vim.keymap.set('n', '<pagedown>', '<c-d>')
 
 -- Undo all changes since last save
 vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>')
