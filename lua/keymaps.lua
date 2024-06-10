@@ -68,10 +68,12 @@ vim.keymap.set('v', 'd', '"_d')
 -- Put change into the blackhole register
 vim.keymap.set('n', 'c', '"_c')
 
--- Map Page Up/Down to CTRL-U/D
-vim.keymap.set('n', '<PageUp>', '<C-U>')
-vim.keymap.set('i', '<PageUp>', '<C-U>')
-vim.keymap.set('n', '<PageDown>', '<C-D>')
-vim.keymap.set('i', '<PageDown>', '<C-D>')
+-- map page up/down to ctrl-u/d
+-- now handled in neoscroll
+-- vim.keymap.set('n', '<pageup>', '<c-u>')
+-- vim.keymap.set('n', '<pagedown>', '<c-d>')
+
+-- Undo all changes since last save
+vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>')
 
 -- vim: ts=2 sts=2 sw=2 et
