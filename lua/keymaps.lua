@@ -74,6 +74,7 @@ vim.keymap.set('n', '<pageup>', '<c-u>')
 vim.keymap.set('n', '<pagedown>', '<c-d>')
 
 -- Undo all changes since last save
-vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>')
+vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>', { desc = 'Undo to last saved' })
+vim.keymap.set('n', '<S-r>', ':later 1f<CR>', { desc = 'Redo to last saved' })
 
 -- vim: ts=2 sts=2 sw=2 et
