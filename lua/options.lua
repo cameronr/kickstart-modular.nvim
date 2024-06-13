@@ -59,13 +59,13 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 4
 
--- Don't autowrap comments (but i still need the BufEnter at the bottom)
-vim.opt.formatoptions:remove { 'c', 'r', 'o' }
+-- Don't autoinsert comments on o/O (but i still need the BufEnter at the bottom)
+vim.opt.formatoptions:remove { 'o' }
 
--- Really, really disable comment wrapping
+-- Really, really disable comment autoinsertion on o/O
 vim.api.nvim_create_autocmd('BufEnter', {
   callback = function()
-    vim.opt.formatoptions:remove { 'c', 'r', 'o' }
+    vim.opt.formatoptions:remove { 'o' }
   end,
   desc = 'Disable New Line Comment',
 })
