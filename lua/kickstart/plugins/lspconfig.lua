@@ -184,30 +184,22 @@ return {
             },
           },
         },
-      }
 
-      -- TODO: make this a overridable variable, environemnt or machine local config?
-
-      -- Insert the servers we only want to install on mac
-      if vim.fn.has 'macunix' == 1 then
-        -- Bash
-        servers['bashls'] = {
+        -- Bash/Zsh
+        bashls = {
           filetypes = { 'sh', 'zsh', 'bash' },
-        }
-        servers['html'] = {}
-        servers['cssls'] = {}
-        servers['tailwindcss'] = {}
-        -- servers['cssls'] = {},
-        --  servers['tailwindcss'] = {},
+        },
+
+        -- HTML / CSS
+        html = {},
+        cssls = {},
+        tailwindcss = {},
 
         -- Javascript/Typescript
-        -- servers['tsserver'] = {},
-
-        -- Javascript/Typescript
-        servers['tsserver'] = {}
+        tsserver = {},
 
         -- Python
-        servers['pyright'] = {}
+        pyright = {},
 
         -- Shopify
         -- theme_check = {
@@ -215,8 +207,8 @@ return {
         -- },
 
         -- YAML
-        servers['yamlls'] = {}
-      end
+        yamlls = {},
+      }
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
