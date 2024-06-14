@@ -110,4 +110,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   end,
 })
 
+-- Set nice diff fill chars
+vim.opt.fillchars:append 'diff:╱'
+
 -- vim: ts=2 sts=2 sw=2 et

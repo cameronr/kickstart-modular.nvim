@@ -75,6 +75,14 @@ vim.keymap.set('n', '<pagedown>', '<c-d>')
 
 -- Undo all changes since last save
 vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>', { desc = 'Undo to last saved' })
-vim.keymap.set('n', '<S-r>', ':later 1f<CR>', { desc = 'Redo to last saved' })
+vim.keymap.set('n', '<C-S-R>', ':later 1f<CR>', { desc = 'Redo to last saved' })
+
+-- Next/Prev tabs
+vim.keymap.set('n', '[t', function()
+  vim.cmd.tabprevious()
+end, { desc = 'Go to previous [T]ab' })
+vim.keymap.set('n', ']t', function()
+  vim.cmd.tabnext()
+end, { desc = 'Go to next [T]ab' })
 
 -- vim: ts=2 sts=2 sw=2 et
