@@ -60,8 +60,31 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('X', 'x', {})
 
--- Disable q:
-vim.keymap.set('n', 'q:', '<nop>')
+-- Remap q: to :q
+vim.keymap.set('n', 'q:', ':q')
+
+-- And now kill it with fire (unless brought up by ctrl-f). Credit to:
+-- https://www.reddit.com/r/neovim/comments/15bvtr4/what_is_that_command_line_mode_where_i_see_the/
+local function escape(keys)
+  return vim.api.nvim_replace_termcodes(keys, true, false, true)
+end
+
+vim.keymap.set('c', '<C-f>', function()
+  vim.g.requested_cmdwin = true
+  vim.api.nvim_feedkeys(escape '<C-f>', 'n', false)
+end)
+
+vim.api.nvim_create_autocmd('CmdWinEnter', {
+  group = vim.api.nvim_create_augroup('CWE', { clear = true }),
+  pattern = '*',
+  callback = function()
+    if vim.g.requested_cmdwin then
+      vim.g.requested_cmdwin = nil
+    else
+      vim.api.nvim_feedkeys(escape ':q<CR>:', 'm', false)
+    end
+  end,
+})
 
 -- Put things removed by d into the blackhole register
 vim.keymap.set('n', 'd', '"_d')
