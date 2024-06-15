@@ -60,7 +60,9 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('X', 'x', {})
 
---
+-- Disable q:
+vim.keymap.set('n', 'q:', '<nop>')
+
 -- Put things removed by d into the blackhole register
 vim.keymap.set('n', 'd', '"_d')
 vim.keymap.set('v', 'd', '"_d')
@@ -74,8 +76,8 @@ vim.keymap.set('n', '<pageup>', '<c-u>')
 vim.keymap.set('n', '<pagedown>', '<c-d>')
 
 -- Undo all changes since last save
-vim.keymap.set('n', '<S-u>', ':earlier 1f<CR>', { desc = 'Undo to last saved' })
-vim.keymap.set('n', '<C-S-R>', ':later 1f<CR>', { desc = 'Redo to last saved' })
+vim.keymap.set('n', '<S-u>', '<cmd>earlier 1f<CR>', { desc = 'Undo to last saved' })
+vim.keymap.set('n', '<C-S-R>', '<cmd>later 1f<CR>', { desc = 'Redo to last saved' })
 
 -- Next/Prev tabs
 vim.keymap.set('n', '[t', function()
