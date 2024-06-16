@@ -13,11 +13,21 @@ return {
         comments = { italic = false },
       },
       lualine_bold = true,
-      -- on_highlights = function(hl, colors)
-      --   hl.IblIndent = {
-      --     fg = '#1f2335',
-      --   }
-      -- end,
+      on_highlights = function(hl, _)
+        -- Use bg.dark for the cursor line background to make it more subtle
+        hl.CursorLine = { bg = '#1f2335' }
+
+        -- Make folds less prominent (especially important for DiffView)
+        hl.Folded = { fg = 'none' }
+
+        -- Make IndentBlankLines indent markers much fainter (bg_dark in tokyonight)
+        hl.IblIndent = { fg = '#1f2335' }
+
+        -- Brighter git colors in LuaLine
+        hl.LuaLineDiffAdd = { fg = '#2e9e98' }
+        hl.LuaLineDiffChange = { fg = '#7aa2f7' }
+        hl.LuaLineDiffDelete = { fg = '#f25a64' }
+      end,
     },
 
     init = function()
@@ -27,17 +37,6 @@ return {
       -- You can configure highlights by doing something like:
       -- Setting italic to false in styles.comments above accomplishes the same thing
       -- vim.cmd.hi 'Comment gui=none'
-
-      -- Use bg.dark for the cursor line background to make it more subtle
-      vim.cmd.hi 'CursorLine guibg=#1f2335'
-
-      -- Make IndentBlankLines indent markers much fainter (bg_dark in tokyonight)
-      vim.cmd.hi 'IblIndent guifg=#1f2335'
-
-      -- Brighter git colors in LuaLine
-      vim.cmd.hi 'LuaLineDiffAdd guifg=#2e9e98'
-      vim.cmd.hi 'LuaLineDiffChange guifg=#7aa2f7'
-      vim.cmd.hi 'LuaLineDiffDelete guifg=#f25a64'
 
       -- Could use the below to make both Lualine and Gitsigns brighter
       -- vim.cmd.hi 'GitSignsAdd guifg=#2e9e98'
