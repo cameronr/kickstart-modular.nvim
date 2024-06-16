@@ -99,8 +99,8 @@ vim.keymap.set('n', 'c', '"_c')
 
 -- map page up/down to ctrl-u/d
 -- now handled in neoscroll
-vim.keymap.set('n', '<pageup>', '<c-u>')
-vim.keymap.set('n', '<pagedown>', '<c-d>')
+vim.keymap.set({ 'n', 'v', 'x' }, '<pageup>', '<c-u>')
+vim.keymap.set({ 'n', 'v', 'x' }, '<pagedown>', '<c-d>')
 
 -- Undo all changes since last save
 vim.keymap.set('n', '<S-u>', '<cmd>earlier 1f<CR>', { desc = 'Undo to last saved' })
