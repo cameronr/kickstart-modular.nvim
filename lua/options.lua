@@ -113,4 +113,11 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 -- Set nice diff fill chars
 vim.opt.fillchars:append 'diff:╱'
 
+-- Set default tab options (but they should be overridden by sleuth)
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.shiftround = true
+vim.o.smartindent = true
+
 -- vim: ts=2 sts=2 sw=2 et
