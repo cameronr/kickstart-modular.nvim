@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('n', ';', ':', { desc = '; Command mode' })
 
 -- Map jk as alternate escape sequence
-vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode with jk' })
 
 -- Sloppy aliases for accidental capital commands
 vim.api.nvim_create_user_command('Qa', 'qa', {})
