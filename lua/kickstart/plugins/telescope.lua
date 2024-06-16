@@ -63,17 +63,13 @@ return {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
         defaults = {
-          --   mappings = {
+          path_display = { truncate = 1 },
           mappings = {
             --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
             i = { ['<esc>'] = actions.close }, -- close on first esc
-            --   },
           },
-          -- },
         },
-        -- pickers = {}
         pickers = {
           buffers = {
             mappings = {

@@ -3,7 +3,10 @@ return {
     'stevearc/conform.nvim',
     -- lazy = false,
     dependencies = {
-      'zapling/mason-conform.nvim',
+      {
+        'zapling/mason-conform.nvim',
+        -- setup is conditionally called in lspconfig.lua so don't set any opts = {} here
+      },
     },
     keys = {
       {

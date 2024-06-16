@@ -8,7 +8,7 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   keys = {
-    { '<leader>e', ':Neotree toggle<CR>', { desc = 'NeoTree toggle' } },
+    { '<leader>e', ':Neotree toggle reveal<CR>', { desc = 'NeoTree toggle' } },
   },
   opts = {
     window = {
