@@ -87,14 +87,12 @@ vim.api.nvim_create_autocmd('CmdWinEnter', {
 })
 
 -- Put things removed by d into the blackhole register
-vim.keymap.set('n', 'd', '"_d')
-vim.keymap.set('v', 'd', '"_d')
+vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 -- Same with x but only in normal mode (x in visual mode is still cut)
 vim.keymap.set('n', 'x', '"_x')
 
 -- Special case single line cut. I know it's horribly inconsistent
-vim.keymap.set('n', 'dd', '"*dd')
-vim.keymap.set('v', 'dd', '"*dd')
+vim.keymap.set({ 'n', 'v' }, 'dd', '"*dd')
 
 -- Put change into the blackhole register
 vim.keymap.set('n', 'c', '"_c')
@@ -115,5 +113,8 @@ end, { desc = 'Go to previous [T]ab' })
 vim.keymap.set('n', ']t', function()
   vim.cmd.tabnext()
 end, { desc = 'Go to next [T]ab' })
+
+-- Shortcute for surrounding a word (inner) with a '
+vim.keymap.set('n', 'sq', "saiw'", { desc = "Surround word with '", remap = true })
 
 -- vim: ts=2 sts=2 sw=2 et
