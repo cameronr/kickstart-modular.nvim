@@ -27,6 +27,16 @@ return {
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
+      -- Confirm for formatters
+      formatters = {
+        yamlfix = {
+          env = {
+            YAMLFIX_SEQUENCE_STYLE = 'block_style',
+            YAMLFIX_preserve_quotes = 'true',
+          },
+        },
+      },
+      --
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
