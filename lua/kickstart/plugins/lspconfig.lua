@@ -230,7 +230,10 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      if not vim.g.no_mason_autoinstall then
+        require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      end
 
       require('mason-lspconfig').setup {
         handlers = {
@@ -246,7 +249,9 @@ return {
       }
 
       -- Install Conform formatters
-      require('mason-conform').setup {}
+      if not vim.g.no_mason_autoinstall then
+        require('mason-conform').setup {}
+      end
     end,
   },
 }
