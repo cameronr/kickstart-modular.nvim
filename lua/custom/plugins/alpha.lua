@@ -24,7 +24,7 @@ return {
       dashboard.button('SPC sg', '  Search files'),
       dashboard.button('SPC s.', '󱑎  Recent Files'),
       dashboard.button('SPC ng', '󰊢  Git'),
-      -- dashboard.button('SPC wr', '󰁯  Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
+      dashboard.button('SPC wr', '󰁯  Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
       dashboard.button('u', '  Update plugins', '<cmd>Lazy sync<CR>'),
       dashboard.button('t', '  Install language tools', '<cmd>Mason<CR>'),
       dashboard.button('c', '  Edit configuration', ':e init.lua | :cd ~/.config/nvim<CR>'),
