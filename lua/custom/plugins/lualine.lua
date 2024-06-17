@@ -4,6 +4,7 @@ return {
 
   config = function()
     local custom_tokyonight = require 'lualine.themes.tokyonight'
+    local lazy_status = require 'lazy.status' -- to configure lazy pending updates count
 
     -- Use bg_dark for the b section background
     custom_tokyonight.normal.b.bg = '#1f2335'
@@ -36,7 +37,17 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
-        lualine_x = { lualine_lsp_status, 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+          {
+            lazy_status.updates,
+            cond = lazy_status.has_updates,
+            color = { fg = '#ff9e64' },
+          },
+          lualine_lsp_status,
+          'encoding',
+          'fileformat',
+          'filetype',
+        },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
       },

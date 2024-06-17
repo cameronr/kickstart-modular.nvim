@@ -12,6 +12,7 @@ return {
     { '<leader>e', '<cmd>Neotree toggle reveal<CR>', { desc = 'NeoTree toggle' } },
   },
   opts = {
+    use_popups_for_input = false,
     window = {
       mappings = {
         -- Unmap toggle so which-key works
@@ -22,6 +23,9 @@ return {
       filtered_items = {
         hide_dotfiles = false,
         hide_gitignored = false,
+      },
+      follow_current_file = {
+        enabled = true, -- follow the active file in the tree
       },
     },
   },
