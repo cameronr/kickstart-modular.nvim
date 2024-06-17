@@ -92,6 +92,10 @@ require('lazy').setup({
     -- pills = true, ---@type boolean,
     border = 'rounded',
   },
+  checker = {
+    enabled = true,
+    notify = true,
+  },
 })
 
 -- vim: ts=2 sts=2 sw=2 et
