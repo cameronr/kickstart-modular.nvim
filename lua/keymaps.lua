@@ -34,6 +34,12 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Some more convenient keymaps for split management
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = '[W]indow split [V]ertically' })
+vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = '[W]indow split [H]orizontally' })
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [E]qual size' })
+vim.keymap.set('n', '<leader>wq', '<cmd>close<CR>', { desc = '[Q]uit current split' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
