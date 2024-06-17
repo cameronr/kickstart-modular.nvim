@@ -114,6 +114,8 @@ return {
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader>su', '<cmd>Telescope undo<CR>>', { desc = '[S]earch [U]ndo' })
       vim.keymap.set('n', '<leader>sp', '<cmd>Telescope notify<CR>', { desc = '[S]earch [P]opup Notifications' })
+      vim.keymap.set('n', '<leader>sp', '<cmd>Telescope notify<CR>', { desc = '[S]earch [P]opup Notifications' })
+      vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odos' })
 
       -- Ctrl-r for command history in command mode (like with zsh+fzf)
       vim.keymap.set('c', '<C-r>', builtin.command_history, { desc = '[S]earch [C]ommands' })
