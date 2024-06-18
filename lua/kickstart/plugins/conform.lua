@@ -1,7 +1,7 @@
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
-    -- lazy = false,
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       {
         'zapling/mason-conform.nvim',
@@ -48,10 +48,21 @@ return {
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         javascript = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
+        svelte = { { 'prettierd', 'prettier' } },
+        css = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
+        json = { { 'prettierd', 'prettier' } },
+        yaml = { { 'prettierd', 'prettier' } },
+        markdown = { { 'prettierd', 'prettier' } },
+        graphql = { { 'prettierd', 'prettier' } },
+        liquid = { { 'prettierd', 'prettier' } },
 
         sh = { 'beautysh' },
         zsh = { 'beautysh' },
-        yaml = { 'yamlfix' },
+        -- yaml = { 'yamlfix' },
       },
     },
   },
