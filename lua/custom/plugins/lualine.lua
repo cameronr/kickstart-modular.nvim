@@ -18,7 +18,7 @@ return {
     local function lualine_lsp_status()
       local haveServers = false
       local names = {}
-      for i, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
+      for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
         -- msg = ' '
         haveServers = true
         table.insert(names, server.name)
@@ -35,8 +35,18 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
+        lualine_b = {
+          'branch',
+          'diff',
+          {
+            'diagnostics',
+            -- symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
+            symbols = { error = ' ', warn = ' ', info = ' ', hint = '󱐋' },
+          },
+        },
+        lualine_c = {
+          { 'filename', path = 4, new_file_status = true },
+        },
         lualine_x = {
           {
             lazy_status.updates,
