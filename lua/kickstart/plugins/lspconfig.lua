@@ -223,6 +223,9 @@ return {
         --   cmd = { 'theme-check-liquid-server' },
         -- },
 
+        -- Typo is too noisy for me without a simple way to override
+        -- typos_lsp = {},
+
         -- YAML
         yamlls = {},
       }

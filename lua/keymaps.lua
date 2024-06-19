@@ -38,7 +38,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = '[W]indow split [V]ertically' })
 vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = '[W]indow split [H]orizontally' })
 vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [E]qual size' })
-vim.keymap.set('n', '<leader>wq', '<cmd>close<CR>', { desc = '[Q]uit current split' })
+vim.keymap.set('n', '<leader>wq', '<cmd>close<CR>', { desc = '[Q]uit window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -93,12 +93,12 @@ vim.api.nvim_create_autocmd('CmdWinEnter', {
 })
 
 -- Put things removed by d into the blackhole register
-vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
+-- vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 -- Same with x but only in normal mode (x in visual mode is still cut)
-vim.keymap.set('n', 'x', '"_x')
+-- vim.keymap.set('n', 'x', '"_x')
 
 -- Special case single line cut. I know it's horribly inconsistent
-vim.keymap.set({ 'n', 'v' }, 'dd', '"*dd')
+-- vim.keymap.set({ 'n', 'v' }, 'dd', '"*dd')
 
 -- Put change into the blackhole register
 vim.keymap.set('n', 'c', '"_c')
@@ -112,15 +112,26 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<pagedown>', '<c-d>')
 vim.keymap.set('n', '<S-u>', '<cmd>earlier 1f<CR>', { desc = 'Undo to last saved' })
 vim.keymap.set('n', '<C-S-R>', '<cmd>later 1f<CR>', { desc = 'Redo to last saved' })
 
--- Next/Prev tabs
-vim.keymap.set('n', '[t', function()
-  vim.cmd.tabprevious()
-end, { desc = 'Go to previous [T]ab' })
-vim.keymap.set('n', ']t', function()
-  vim.cmd.tabnext()
-end, { desc = 'Go to next [T]ab' })
+-- -- Next/prev tabs
+vim.keymap.set('n', '[t', '<cmd>:tabprevious<CR>', { desc = 'Go to previous [T]ab' })
+vim.keymap.set('n', ']t', '<cmd>:tabnext<CR>', { desc = 'Go to next [T]ab' })
+vim.keymap.set('n', '<leader>tq', '<cmd>:tclose<CR>', { desc = 'Close [T]ab' })
+
+-- Next/prev buffer
+vim.keymap.set('n', '[b', '<cmd>:bprevious<CR>', { desc = 'Go to previous [B]uffer' })
+vim.keymap.set('n', ']b', '<cmd>:bnext<CR>', { desc = 'Go to next [B]uffer' })
+-- vim.keymap.set('n', '<leader>v', '<cmd>:bprevious<CR>', { desc = 'Go to previous [B]uffer' })
+-- vim.keymap.set('n', '<leader>b', '<cmd>:bnext<CR>', { desc = 'Go to next [B]uffer' })
+vim.keymap.set('n', '<leader>bq', '<cmd>:bdelete<CR>', { desc = 'Close [B]uffer' })
 
 -- Shortcute for surrounding a word (inner) with a '
-vim.keymap.set('n', 'sq', "saiw'", { desc = "Surround word with '", remap = true })
+vim.keymap.set('n', 'wq', "waiw'", { desc = "Wrap word with '", remap = true })
+vim.keymap.set('n', 'wb', 'waaw}', { desc = 'Wrap word with {}', remap = true })
+
+-- Neogit
+-- vim.keymap.set('n', '<leader>n', '<cmd>Neogit<CR>', { desc = '[N]eogit' }
+
+-- NeoTree
+-- vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle reveal<CR>', { desc = 'n[E]otree' })
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -24,10 +24,11 @@ return {
       dashboard.button('SPC sg', '  Search files'),
       dashboard.button('SPC s.', '󱑎  Recent Files'),
       dashboard.button('SPC n', '󰊢  Neogit'),
-      dashboard.button('r', '󰁯  Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
+      dashboard.button('r', '󰁯  Restore a Session', "<cmd>lua require('auto-session.session-lens').search_session()<CR>"),
+      dashboard.button('c', '󰁯  Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
       dashboard.button('u', '  Update plugins', '<cmd>Lazy sync<CR>'),
       dashboard.button('m', '  Install language tools', '<cmd>Mason<CR>'),
-      dashboard.button('c', '  Edit configuration', ':e init.lua | :cd ~/.config/nvim<CR>'),
+      -- dashboard.button('c', '  Edit configuration', ':cd ~/.config/nvim | :e init.lua<CR>'),
       dashboard.button('q', '󰩈  Quit NVIM', '<cmd>qa<CR>'),
     }
 
