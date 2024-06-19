@@ -61,6 +61,7 @@ return {
     local opts = {
       options = {
         theme = custom_tokyonight,
+        component_separators = '',
         -- globalstatus = true,
       },
       sections = {
