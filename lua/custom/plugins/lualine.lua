@@ -62,6 +62,7 @@ return {
       options = {
         theme = custom_tokyonight,
         component_separators = '',
+        disabled_filetypes = { 'alpha', 'neo-tree' },
         -- globalstatus = true,
       },
       sections = {
@@ -88,7 +89,7 @@ return {
           },
         },
         lualine_c = {
-          { 'filename', path = 4, new_file_status = true },
+          { 'filename', path = 1, new_file_status = true, shorting_target = 16 },
         },
         lualine_x = {
           {
