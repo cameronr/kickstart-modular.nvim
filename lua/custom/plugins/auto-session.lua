@@ -9,8 +9,6 @@ return {
       auto_restore_enabled = false,
       auto_save_enabled = true,
 
-      log_level = 'debug',
-
       auto_session_suppress_dirs = { '~/', '~/Downloads', '~/Documents', '~/Desktop' },
       session_lens = {
         -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
