@@ -30,6 +30,7 @@ return {
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
       { 'debugloop/telescope-undo.nvim' },
+      { 'aaronhallaert/advanced-git-search.nvim', cmd = { 'AdvancedGitSearch' } },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -91,6 +92,13 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          advanced_git_search = {
+            browse_command = 'DiffviewOpen {commit_hash}',
+            diff_plugin = 'diffview',
+            entry_default_author_or_date = 'author',
+
+            -- See Config
+          },
         },
       }
 
@@ -98,6 +106,7 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'undo')
+      pcall(require('telescope').load_extension, 'advanced_git_search')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -125,11 +134,11 @@ return {
       vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odos' })
 
       -- Git options
-      vim.keymap.set('n', '<leader>sgc', '<cmd>Telescope git_commits<CR>', { desc = '[S]earch [G]it [C]ommits' })
+      vim.keymap.set('n', '<leader>sgc', '<cmd>AdvancedGitSearch search_log_content<CR>', { desc = '[S]earch [G]it [C]ommits' })
       vim.keymap.set('n', '<leader>sgb', '<cmd>Telescope git_branches<CR>', { desc = '[S]earch [G]it [B]ranches' })
       vim.keymap.set('n', '<leader>sgs', '<cmd>Telescope git_status<CR>', { desc = '[S]earch [G]it [S]tatus' })
       vim.keymap.set('n', '<leader>sgh', '<cmd>Telescope git_stash<CR>', { desc = '[S]earch [G]it stas[H]' })
-      vim.keymap.set('n', '<leader>sgf', '<cmd>Telescope git_bcommits<CR>', { desc = '[S]earch [G]it bu[F]fer commits' })
+      vim.keymap.set('n', '<leader>sgf', '<cmd>AdvancedGitSearch search_log_content_file<CR>', { desc = '[S]earch [G]it bu[F]fer commits' })
 
       vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odos' })
 
