@@ -9,7 +9,7 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   keys = {
-    { '<leader>e', '<cmd>Neotree toggle reveal<CR>', { desc = 'NeoTree toggle' } },
+    { '<leader>e', '<cmd>Neotree toggle reveal<CR>', desc = 'NeoTr[E]e toggle' },
   },
   opts = {
     use_popups_for_input = false,

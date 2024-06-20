@@ -19,7 +19,12 @@ return {
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      {
+        'folke/lazydev.nvim',
+        opts = {
+          ft = 'lua', -- only load on lua files
+        },
+      },
 
       -- For catching file renames
       { 'antosha417/nvim-lsp-file-operations', config = true },
@@ -198,6 +203,10 @@ return {
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+              },
             },
           },
         },

@@ -7,6 +7,8 @@ return {
       -- don't save when it's just the dashboard, or a nvim-notify buffer
       bypass_session_save_file_types = { 'alpha', 'notify' },
       auto_restore_enabled = true,
+      -- auto_restore_lazy_delay_enabled = false,
+
       auto_save_enabled = true,
 
       -- log_level = 'debug',

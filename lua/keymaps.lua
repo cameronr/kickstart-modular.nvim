@@ -128,10 +128,7 @@ vim.keymap.set('n', '<leader>bq', '<cmd>:bdelete<CR>', { desc = 'Close [B]uffer'
 vim.keymap.set('n', 'wq', "waiw'", { desc = "Wrap word with '", remap = true })
 vim.keymap.set('n', 'wb', 'waaw}', { desc = 'Wrap word with {}', remap = true })
 
--- Neogit
--- vim.keymap.set('n', '<leader>n', '<cmd>Neogit<CR>', { desc = '[N]eogit' }
-
--- NeoTree
--- vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle reveal<CR>', { desc = 'n[E]otree' })
+-- Oil
+-- vim.keymap.set('n', '-', '<CMD>Oil --float<CR>', { desc = 'Open parent directory' })
 
 -- vim: ts=2 sts=2 sw=2 et
