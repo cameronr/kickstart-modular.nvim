@@ -27,6 +27,8 @@ return {
         hl.LuaLineDiffAdd = { fg = '#2e9e98' }
         hl.LuaLineDiffChange = { fg = '#7aa2f7' }
         hl.LuaLineDiffDelete = { fg = '#f25a64' }
+
+        hl.DiagnosticUnnecessary = hl.DiagnosticUnderlineWarn
       end,
     },
 

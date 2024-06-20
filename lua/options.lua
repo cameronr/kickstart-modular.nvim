@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.opt.whichwrap:append '<,>,[,]'
 
 -- Add characters to set used to identify words
-vim.opt.iskeyword:append { '-', '.', '/', ':', '.' }
+vim.opt.iskeyword:append { '-', '/', ':' }
 
 -- Don't show ~ at end of buffer
 vim.opt.fillchars = { eob = ' ' }
