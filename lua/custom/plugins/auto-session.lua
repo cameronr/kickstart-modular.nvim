@@ -9,6 +9,8 @@ return {
       auto_restore_enabled = true,
       auto_save_enabled = true,
 
+      -- log_level = 'debug',
+
       auto_session_suppress_dirs = { '~/', '~/Downloads', '~/Documents', '~/Desktop' },
       session_lens = {
         -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
@@ -27,14 +29,14 @@ return {
     }
     local keymap = vim.keymap
     -- restore last workspace session for current directory
-    keymap.set('n', '<leader>wr', '<cmd>SessionRestore<CR>', { desc = '[W]orkspace [R]estore session for cwd' })
+    keymap.set('n', '<leader>wr', require('auto-session.session-lens').search_session, { desc = '[W]orkspace [R]estore session' })
 
     -- save workspace session for current working directory
     keymap.set('n', '<leader>ws', '<cmd>SessionSave<CR>', { desc = '[W]orkspace [S]ave session root dir' })
 
-    keymap.set('n', '<leader>sW', require('auto-session.session-lens').search_session, {
-      desc = 'Search [W]orkspace session',
-      noremap = true,
-    })
+    -- keymap.set('n', '<leader>sW', require('auto-session.session-lens').search_session, {
+    --   desc = 'Search [W]orkspace session',
+    --   noremap = true,
+    -- })
   end,
 }
