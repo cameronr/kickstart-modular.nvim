@@ -129,7 +129,6 @@ vim.keymap.set('n', 'wq', "waiw'", { desc = "Wrap word with '", remap = true })
 vim.keymap.set('n', 'wb', 'waaw}', { desc = 'Wrap word with {}', remap = true })
 
 -- Debugging key
--- vim.keymap.set('n', '<Bslash>d', function()
--- end)
+vim.keymap.set('n', '<Bslash>d', function() end)
 
 -- vim: ts=2 sts=2 sw=2 et

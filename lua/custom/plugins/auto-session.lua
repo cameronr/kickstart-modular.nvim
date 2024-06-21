@@ -7,10 +7,10 @@ return {
       -- don't save when it's just the dashboard, or a nvim-notify buffer
       bypass_session_save_file_types = { 'alpha', 'notify' },
       auto_restore_enabled = true,
-      -- auto_restore_lazy_delay_enabled = false,
-
       auto_save_enabled = true,
 
+      -- auto_restore_lazy_delay_enabled = true,
+      -- close_unsupported_windows = true,
       -- log_level = 'debug',
 
       auto_session_suppress_dirs = { '~/', '~/Downloads', '~/Documents', '~/Desktop' },
@@ -25,13 +25,11 @@ return {
 
       pre_save_cmds = {
         function()
-          -- If Neotree is open, close it
-          vim.cmd 'Neotree close'
+          -- Close any tabs with these filetypes
+          local fts_to_match = { 'Diffview' }
 
-          -- Close any Neogit/Diffview windows
-          local fts_to_match = { 'Neogit', 'Diffview' }
-          -- Close any Neogit/Diffview windows
-
+          -- Auto-session close unsupported will only close the DiffView window, I want to close
+          -- the whole tab
           -- Look for any windows with buffers that match fts_to_match
           local function should_close_tab(tabpage)
             local windows = vim.api.nvim_tabpage_list_wins(tabpage)
@@ -69,5 +67,5 @@ return {
     --   desc = 'Search [W]orkspace session',
     --   noremap = true,
     -- })
-  end,
+  end, -- Close any Neogit/Diffview windows
 }
